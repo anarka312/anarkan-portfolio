@@ -13,10 +13,10 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://anarkan-dev.netlify.app"),
+  metadataBase: new URL("https://anarkan.dev"),
   title,
   alternates: {
-    canonical: "https://anarkan-dev.netlify.app/",
+    canonical: "https://anarkan.dev/",
   },
   description,
   openGraph: {
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     siteName: "Anarkan Sadyralieva",
     title,
     description,
-    url: "https://anarkan-dev.netlify.app/",
+    url: "https://anarkan.dev/",
   },
   twitter: {
     card: "summary_large_image",
