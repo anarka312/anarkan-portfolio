@@ -8,7 +8,7 @@ type Project = {
   type: string;
   role: string;
   description: string;
-  status: string;
+  status?: string;
   technologies?: string;
   href?: string;
 };
@@ -40,25 +40,24 @@ const projects: Project[] = [
   },
   {
     id: "03",
-    title: "Shaboto",
-    image: "/projects/shaboto.jpg",
-    imageAlt: "Дизайн сайта Shaboto",
-    type: "Independent Project · Tilda",
-    role: "Web Design & Tilda Development",
+    title: "Evospace",
+    image: "/projects/evospace.jpg",
+    imageAlt: "Главная страница сайта Evospace",
+    type: "Team Project · Tilda",
+    role: "Tilda Implementation & Responsive Development",
     description:
-      "Самостоятельно разработала структуру и визуальную концепцию сайта, полностью собрала проект в Tilda и настроила адаптивную версию.",
-    status: "Completed · Not launched",
+      "Я работала над проектом под руководством ведущего разработчика: переносила готовый дизайн в Tilda, собирала страницы и настраивала адаптивность.",
   },
   {
     id: "04",
-    title: "Жусуп Абдрахманов",
-    image: "/projects/jusup.jpg",
-    imageAlt: "Главная страница сайта фильма Жусуп Абдрахманов",
-    type: "Independent Project · Tilda",
-    role: "Web Design & Tilda Development",
-    description:
-      "Самостоятельно разработала и собрала сайт фильма: структура, визуальная подача, верстка в Tilda и адаптация для разных экранов.",
-    status: "Completed · Not launched",
+    title: "Сухой лес",
+    image: "/projects/suhoy-les.jpg",
+    imageAlt: "Главная страница сайта Сухой лес",
+    type: "Commercial Project · Tilda",
+    role: "Tilda Development",
+    description: "Коммерческий сайт на платформе Tilda.",
+    status: "Live project",
+    href: "https://сухой-лес.рф",
   },
   {
     id: "05",
@@ -142,9 +141,11 @@ export default function Projects() {
                     </p>
                   )}
                   <div className="mt-auto flex flex-wrap items-center justify-between gap-x-6 gap-y-3 pt-8">
-                    <p className="text-xs font-medium tracking-wide text-secondary">
-                      {project.status}
-                    </p>
+                    {project.status && (
+                      <p className="text-xs font-medium tracking-wide text-secondary">
+                        {project.status}
+                      </p>
+                    )}
                     {project.href && (
                       <a
                         href={project.href}
