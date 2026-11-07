@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import Marquee from "@/components/Marquee";
 import About from "@/components/About";
 import Services from "@/components/Services";
 import Projects from "@/components/Projects";
@@ -24,6 +25,7 @@ export default function Home() {
         className="bg-background font-sans text-primary"
       >
         <Hero />
+        <Marquee />
         <About />
         <Services />
         <Projects />

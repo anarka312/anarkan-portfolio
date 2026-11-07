@@ -1,29 +1,148 @@
 @import "tailwindcss";
 
 :root {
-  --background: #FFFFFF;
-  --secondary-background: #F7F7F8;
-  --primary-text: #18181B;
-  --secondary-text: #62626C;
-  --border: #E4E4E7;
-  --accent: #4F46E5;
+  --canvas: #fffdf5;
+  --surface: #ffffff;
+  --ink: #0f172a;
+  --black: #000000;
+  --yellow: #fde047;
+  --pink: #f9a8d4;
+  --blue: #2563eb;
+  --muted: #475569;
+
+  --background: var(--canvas);
+  --secondary-background: var(--surface);
+  --primary-text: var(--ink);
+  --secondary-text: var(--muted);
+  --border: var(--black);
+  --accent: var(--blue);
+
+  --font-body-family: var(--font-space-grotesk), Arial, sans-serif;
+  --font-display-family: var(--font-syne), Arial, sans-serif;
 }
 
 @theme inline {
+  --color-canvas: var(--canvas);
   --color-background: var(--background);
+  --color-white: var(--surface);
   --color-surface: var(--secondary-background);
+  --color-ink: var(--ink);
   --color-primary: var(--primary-text);
+  --color-black: var(--black);
+  --color-yellow: var(--yellow);
+  --color-pink: var(--pink);
+  --color-blue: var(--blue);
+  --color-muted: var(--muted);
   --color-secondary: var(--secondary-text);
   --color-border: var(--border);
   --color-accent: var(--accent);
-  --font-sans: var(--font-manrope), sans-serif;
+  --font-sans: var(--font-body-family);
+  --font-display: var(--font-display-family);
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     background: var(--background);
     color: var(--primary-text);
-    font-family: var(--font-manrope), sans-serif;
+    font-family: var(--font-body-family);
+    line-height: 1.5;
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display-family);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+
+  section[id] {
+    scroll-margin-top: 6rem;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--black);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: var(--pink);
+    color: var(--black);
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display-family);
+  }
+
+  .font-body {
+    font-family: var(--font-body-family);
+  }
+
+  .neo-border {
+    border: 2px solid var(--black);
+  }
+
+  .neo-shadow {
+    box-shadow: 6px 6px 0 0 var(--black);
+  }
+
+  .neo-shadow-hover {
+    transition:
+      box-shadow 180ms ease,
+      transform 180ms ease;
+  }
+
+  .neo-shadow-hover:hover,
+  .neo-shadow-hover:focus-visible {
+    box-shadow: 9px 9px 0 0 var(--black);
+    transform: translate(-2px, -2px);
+  }
+
+  .neo-button {
+    display: inline-flex;
+    min-height: 3rem;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--black);
+    padding: 0.75rem 1.25rem;
+    color: var(--ink);
+    font-family: var(--font-body-family);
+    font-weight: 700;
+    line-height: 1;
+    box-shadow: 4px 4px 0 0 var(--black);
+    transition:
+      box-shadow 180ms ease,
+      transform 180ms ease;
+  }
+
+  .neo-button:hover,
+  .neo-button:focus-visible {
+    box-shadow: 7px 7px 0 0 var(--black);
+    transform: translate(-2px, -2px);
+  }
+
+  .sticker {
+    display: inline-flex;
+    align-items: center;
+    border: 2px solid var(--black);
+    padding: 0.35rem 0.7rem;
+    font-family: var(--font-body-family);
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transform: rotate(-2deg);
   }
 }
 
@@ -46,6 +165,46 @@
 .hero-enter-2 { animation-delay: 60ms; }
 .hero-enter-3 { animation-delay: 120ms; }
 .hero-enter-4 { animation-delay: 180ms; }
+.hero-enter-5 { animation-delay: 240ms; }
+
+@keyframes hero-blob-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(10px, -12px, 0) scale(1.04);
+  }
+}
+
+@keyframes hero-blob-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-6deg);
+  }
+  50% {
+    transform: translate3d(-8px, 10px, 0) rotate(-4deg);
+  }
+}
+
+@keyframes marquee-scroll {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.hero-blob-blue {
+  animation: hero-blob-float 12s ease-in-out infinite;
+}
+
+.hero-blob-pink {
+  animation: hero-blob-drift 14s ease-in-out infinite;
+}
+
+.marquee-track {
+  animation: marquee-scroll 20s linear infinite;
+  will-change: transform;
+}
 
 .motion-ready [data-reveal] {
   opacity: 0;
@@ -61,8 +220,29 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .hero-enter {
     animation: none;
+  }
+
+  .hero-blob,
+  .marquee-track {
+    animation: none;
+  }
+
+  .neo-shadow-hover,
+  .neo-button {
+    transition: none;
+  }
+
+  .neo-shadow-hover:hover,
+  .neo-shadow-hover:focus-visible,
+  .neo-button:hover,
+  .neo-button:focus-visible {
+    transform: none;
   }
 
   .motion-ready [data-reveal],

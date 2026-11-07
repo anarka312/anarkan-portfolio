@@ -9,7 +9,6 @@ type Project = {
   role: string;
   description: string;
   status?: string;
-  technologies?: string;
   href?: string;
 };
 
@@ -59,18 +58,14 @@ const projects: Project[] = [
     status: "Live project",
     href: "https://сухой-лес.рф",
   },
-  {
-    id: "05",
-    title: "Anarkan Portfolio",
-    image: "/projects/portfolio.jpg",
-    imageAlt: "Главная страница портфолио Anarkan Sadyralieva",
-    type: "Personal Project · Frontend Development",
-    role: "Design & Development",
-    description:
-      "Личный сайт-портфолио, разработанный на современном frontend-стеке с компонентной архитектурой и адаптивным интерфейсом.",
-    technologies: "Next.js · TypeScript · Tailwind CSS",
-    status: "In development",
-  },
+];
+
+const accentClasses = ["bg-yellow", "bg-pink", "bg-blue", "bg-yellow"];
+const rotationClasses = [
+  "rotate-[0.5deg] lg:rotate-[1deg] motion-safe:group-hover:rotate-[1.5deg]",
+  "-rotate-[0.5deg] lg:-rotate-[1deg] motion-safe:group-hover:-rotate-[1.5deg]",
+  "rotate-[0.5deg] lg:rotate-[1deg] motion-safe:group-hover:rotate-[1.5deg]",
+  "-rotate-[0.5deg] lg:-rotate-[1deg] motion-safe:group-hover:-rotate-[1.5deg]",
 ];
 
 export default function Projects() {
@@ -79,90 +74,141 @@ export default function Projects() {
       data-reveal
       id="projects"
       aria-labelledby="projects-heading"
-      className="mx-auto max-w-7xl px-6 pt-8 sm:px-10 sm:pt-12 lg:px-16 lg:pt-16"
+      className="overflow-hidden py-16 sm:py-20 lg:py-28"
     >
-      <div className="border-t border-border pt-6 sm:pt-8">
-        <p className="text-xs font-medium tracking-wide text-secondary">
+      <div className="mx-auto max-w-7xl px-4 sm:px-10 lg:px-16">
+        <p className="sticker rotate-[-1deg] bg-yellow text-[0.625rem] sm:text-xs">
           03 — Проекты
         </p>
-        <h2
-          id="projects-heading"
-          className="mt-6 text-3xl leading-tight font-semibold tracking-[-0.035em] text-balance sm:text-4xl lg:text-5xl"
-        >
-          Избранные работы
-        </h2>
-        <p className="mt-4 max-w-xl text-base leading-relaxed text-secondary sm:text-lg">
-          Коммерческие и самостоятельные проекты, над которыми я работала.
-        </p>
-        <ul className="mt-8 grid grid-cols-1 gap-6 sm:mt-10 lg:grid-cols-2 lg:gap-8">
-          {projects.map((project) => (
-            <li
-              key={project.id}
-              className={`min-w-0 ${project.id === "05" ? "lg:col-span-2" : ""}`}
-            >
-              <article
-                aria-labelledby={`project-${project.id}-heading`}
-                className="group flex h-full flex-col rounded-lg border border-border bg-background transition-[border-color,transform] duration-300 ease-out motion-safe:hover:-translate-y-0.5 hover:border-secondary/40"
+
+        <div className="mt-9 sm:mt-12">
+          <h2
+            id="projects-heading"
+            className="font-display text-[clamp(3rem,7vw,6.5rem)] leading-[0.88] font-extrabold tracking-[-0.065em] text-ink uppercase"
+          >
+            <span className="block">Избранные</span>
+            <span className="relative mt-3 inline-block isolate px-2 py-1 sm:mt-4 sm:px-3">
+              <span
+                aria-hidden="true"
+                className="absolute inset-0 -z-10 rotate-[-1deg] border-2 border-black bg-pink"
+              />
+              Работы
+            </span>
+          </h2>
+          <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
+            Коммерческие и самостоятельные проекты, над которыми я работала.
+          </p>
+        </div>
+
+        <ol className="mt-14 grid gap-16 sm:mt-18 sm:gap-20 lg:mt-24 lg:gap-28">
+          {projects.map((project, index) => {
+            const isReversed = index % 2 === 1;
+            const tags = project.type.split(" · ");
+            const imagePosition = isReversed
+              ? "lg:col-start-2"
+              : "lg:col-start-1";
+            const contentPosition = isReversed
+              ? "lg:col-start-1"
+              : "lg:col-start-2";
+            const gridColumns = isReversed
+              ? "lg:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)]"
+              : "lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)]";
+
+            return (
+              <li
+                key={project.id}
+                data-reveal
+                className="group relative min-w-0 p-2 sm:p-3"
               >
                 <div
-                  className={`relative aspect-[16/10] overflow-hidden rounded-t-lg border-b border-border bg-surface ${project.id === "05" ? "lg:aspect-[16/7]" : ""}`}
+                  aria-hidden="true"
+                  className={`absolute inset-2 border-2 border-black transition-transform duration-200 ${accentClasses[index]} ${rotationClasses[index]}`}
+                />
+
+                <article
+                  className={`relative z-10 grid min-w-0 overflow-hidden border-2 border-black bg-surface shadow-[4px_4px_0_0_#000] transition-transform duration-200 motion-safe:group-hover:-translate-x-0.5 motion-safe:group-hover:-translate-y-0.5 sm:shadow-[6px_6px_0_0_#000] lg:grid-rows-[auto_1fr] ${gridColumns}`}
                 >
-                  <Image
-                    src={project.image}
-                    alt={project.imageAlt}
-                    fill
-                    sizes={
-                      project.id === "05"
-                        ? "(min-width: 1280px) 1152px, (min-width: 1024px) calc(100vw - 128px), (min-width: 640px) calc(100vw - 80px), calc(100vw - 48px)"
-                        : "(min-width: 1280px) 560px, (min-width: 1024px) calc((100vw - 160px) / 2), (min-width: 640px) calc(100vw - 80px), calc(100vw - 48px)"
-                    }
-                    className="object-cover transition-transform duration-500 ease-out motion-safe:group-hover:scale-[1.02] motion-reduce:transition-none"
-                  />
-                </div>
-                <div className="flex flex-1 flex-col p-6 sm:p-8 lg:p-10">
-                  <p className="text-xs leading-relaxed font-medium tracking-wide text-secondary sm:text-sm">
-                    {project.type}
-                  </p>
-                  <h3
-                    id={`project-${project.id}-heading`}
-                    className="mt-3 text-2xl leading-tight font-semibold tracking-tight text-primary sm:text-3xl"
+                  <header
+                    className={`min-w-0 p-5 pb-4 sm:p-7 sm:pb-5 lg:row-start-1 lg:p-9 lg:pb-5 ${contentPosition}`}
                   >
-                    {project.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-secondary">
-                    {project.role}
-                  </p>
-                  <p className="mt-5 max-w-2xl text-base leading-relaxed text-secondary sm:text-lg">
-                    {project.description}
-                  </p>
-                  {project.technologies && (
-                    <p className="mt-4 text-sm leading-relaxed text-secondary">
-                      {project.technologies}
+                    <p className="font-display text-5xl leading-none font-extrabold tracking-[-0.08em] text-blue sm:text-6xl lg:text-8xl">
+                      {project.id}
                     </p>
-                  )}
-                  <div className="mt-auto flex flex-wrap items-center justify-between gap-x-6 gap-y-3 pt-8">
-                    {project.status && (
-                      <p className="text-xs font-medium tracking-wide text-secondary">
-                        {project.status}
-                      </p>
-                    )}
+                    <h3 className="mt-3 font-display text-3xl leading-[0.95] font-extrabold tracking-[-0.05em] text-ink uppercase sm:text-4xl lg:mt-4 lg:text-5xl">
+                      {project.title}
+                    </h3>
+                  </header>
+
+                  <div
+                    className={`min-w-0 px-5 sm:px-7 lg:row-span-2 lg:row-start-1 lg:p-6 ${imagePosition}`}
+                  >
+                    <div className="flex h-full min-h-[17rem] flex-col overflow-hidden border-2 border-black bg-surface sm:min-h-[24rem] lg:min-h-[30rem]">
+                      <div className="flex min-h-11 shrink-0 items-center justify-between gap-3 border-b-2 border-black bg-surface px-3 py-2 sm:px-4">
+                        <div aria-hidden="true" className="flex gap-1.5">
+                          <span className="h-2.5 w-2.5 rounded-full border border-black bg-yellow" />
+                          <span className="h-2.5 w-2.5 rounded-full border border-black bg-pink" />
+                          <span className="h-2.5 w-2.5 rounded-full border border-black bg-blue" />
+                        </div>
+                        <p className="truncate text-[0.625rem] font-bold tracking-[0.1em] text-muted uppercase sm:text-xs">
+                          {project.title}
+                        </p>
+                      </div>
+                      <div className="relative min-h-0 flex-1 overflow-hidden bg-canvas">
+                        <Image
+                          src={project.image}
+                          alt={project.imageAlt}
+                          fill
+                          sizes="(min-width: 1280px) 700px, (min-width: 1024px) 55vw, (min-width: 640px) calc(100vw - 104px), calc(100vw - 52px)"
+                          className="object-cover object-left transition-transform duration-250 motion-safe:group-hover:scale-[1.02] motion-reduce:transition-none"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    className={`flex min-w-0 flex-col p-5 pt-6 sm:p-7 sm:pt-7 lg:row-start-2 lg:p-9 lg:pt-3 ${contentPosition}`}
+                  >
+                    <p className="text-xs leading-relaxed font-bold tracking-[0.05em] text-ink uppercase sm:text-sm">
+                      {project.role}
+                    </p>
+
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="border-2 border-black bg-background px-2.5 py-1.5 text-[0.625rem] font-bold tracking-[0.08em] text-ink uppercase sm:text-xs"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                      {project.status && (
+                        <span className="border-2 border-black bg-blue px-2.5 py-1.5 text-[0.625rem] font-bold tracking-[0.08em] text-white uppercase sm:text-xs">
+                          {project.status}
+                        </span>
+                      )}
+                    </div>
+
+                    <p className="mt-5 text-sm leading-relaxed text-muted sm:text-base lg:text-lg">
+                      {project.description}
+                    </p>
+
                     {project.href && (
                       <a
                         href={project.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label={`Открыть сайт ${project.title} в новой вкладке`}
-                        className="rounded-sm text-sm font-medium text-accent transition-colors duration-200 hover:text-accent/90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                        aria-label={`Смотреть сайт ${project.title} в новой вкладке`}
+                        className="neo-button mt-7 w-full self-start bg-yellow px-5 py-3 text-xs sm:w-auto sm:text-sm"
                       >
-                        Открыть сайт ↗
+                        Смотреть сайт ↗
                       </a>
                     )}
                   </div>
-                </div>
-              </article>
-            </li>
-          ))}
-        </ul>
+                </article>
+              </li>
+            );
+          })}
+        </ol>
       </div>
     </section>
   );

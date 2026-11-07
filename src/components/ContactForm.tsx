@@ -10,7 +10,7 @@ const services = [
 ] as const;
 
 const fieldClassName =
-  "block min-h-14 w-full min-w-0 rounded-lg border border-secondary/70 bg-background px-4 py-4 text-base text-primary transition-colors duration-200 placeholder:text-secondary hover:border-secondary focus-visible:border-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
+  "block min-h-14 w-full min-w-0 border-2 border-black bg-surface px-4 py-4 text-base text-ink transition-[box-shadow,transform] duration-150 placeholder:text-muted focus-visible:border-black focus-visible:outline-none focus-visible:shadow-[3px_3px_0_0_#FDE047]";
 
 type SubmissionStatus = "idle" | "submitting" | "success" | "error";
 
@@ -65,13 +65,13 @@ export default function ContactForm() {
     <form
       aria-label="Заявка на проект"
       aria-busy={isSubmitting}
-      className="relative min-w-0 space-y-5 lg:col-span-6"
+      className="relative z-10 min-w-0 space-y-6 border-2 border-black bg-surface p-5 shadow-[4px_4px_0_0_#000] sm:p-8 sm:shadow-[6px_6px_0_0_#000] lg:p-10 lg:shadow-[8px_8px_0_0_#000]"
       onSubmit={handleSubmit}
     >
       <div>
         <label
           htmlFor="brief-name"
-          className="mb-2 block text-sm font-medium text-primary"
+          className="mb-2 block text-xs font-bold tracking-[0.08em] text-ink uppercase sm:text-sm"
         >
           Ваше имя
         </label>
@@ -89,7 +89,7 @@ export default function ContactForm() {
       <div>
         <label
           htmlFor="brief-contact"
-          className="mb-2 block text-sm font-medium text-primary"
+          className="mb-2 block text-xs font-bold tracking-[0.08em] text-ink uppercase sm:text-sm"
         >
           Email или Telegram
         </label>
@@ -104,7 +104,7 @@ export default function ContactForm() {
         />
       </div>
       <fieldset className="min-w-0">
-        <legend className="mb-2 text-sm font-medium text-primary">
+        <legend className="mb-3 text-xs font-bold tracking-[0.08em] text-ink uppercase sm:text-sm">
           Что вам нужно?
         </legend>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -117,7 +117,7 @@ export default function ContactForm() {
                 defaultChecked={index === 0}
                 className="peer sr-only"
               />
-              <span className="flex min-h-14 items-center rounded-lg border border-secondary/70 bg-background px-4 py-4 text-sm text-secondary transition-colors duration-200 hover:border-secondary peer-checked:border-accent peer-checked:bg-accent/5 peer-checked:font-medium peer-checked:text-primary peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-accent">
+              <span className="flex min-h-14 items-center border-2 border-black bg-surface px-4 py-3 text-sm font-bold text-ink uppercase transition-[box-shadow,transform,background-color] duration-150 hover:bg-canvas peer-checked:-translate-x-0.5 peer-checked:-translate-y-0.5 peer-checked:bg-yellow peer-checked:shadow-[4px_4px_0_0_#000] peer-focus-visible:outline-3 peer-focus-visible:outline-offset-3 peer-focus-visible:outline-black">
                 {service}
               </span>
             </label>
@@ -127,7 +127,7 @@ export default function ContactForm() {
       <div>
         <label
           htmlFor="brief-message"
-          className="mb-2 block text-sm font-medium text-primary"
+          className="mb-2 block text-xs font-bold tracking-[0.08em] text-ink uppercase sm:text-sm"
         >
           Расскажите о проекте
         </label>
@@ -159,9 +159,9 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="inline-flex min-h-14 w-full items-center justify-center rounded-lg bg-accent px-7 py-4 text-sm font-medium text-white opacity-100 transition-colors duration-200 hover:bg-accent/90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent disabled:cursor-wait disabled:bg-accent/80"
+        className="inline-flex min-h-14 w-full items-center justify-center border-2 border-black bg-yellow px-7 py-4 font-display text-sm font-extrabold tracking-[0.04em] text-black uppercase shadow-[5px_5px_0_0_#000] transition-[box-shadow,transform,opacity] duration-150 motion-safe:hover:-translate-x-0.5 motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-[7px_7px_0_0_#000] motion-safe:active:translate-x-0.5 motion-safe:active:translate-y-0.5 motion-safe:active:shadow-[2px_2px_0_0_#000] disabled:cursor-wait disabled:opacity-60 disabled:shadow-[2px_2px_0_0_#000]"
       >
-        {isSubmitting ? "Отправка..." : "Отправить заявку"}
+        {isSubmitting ? "Отправка..." : "Отправить заявку →"}
       </button>
 
       <div
@@ -171,12 +171,12 @@ export default function ContactForm() {
         aria-atomic="true"
       >
         {status === "success" && (
-          <p className="rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm leading-relaxed text-emerald-900">
+          <p className="border-2 border-black bg-yellow px-4 py-3 text-sm leading-relaxed font-bold text-ink">
             Спасибо! Заявка отправлена. Я свяжусь с вами в ближайшее время.
           </p>
         )}
         {status === "error" && (
-          <p className="rounded-lg border border-border bg-surface px-4 py-3 text-sm leading-relaxed text-primary">
+          <p className="border-2 border-black bg-pink px-4 py-3 text-sm leading-relaxed font-bold text-ink">
             Не удалось отправить заявку. Попробуйте ещё раз или напишите мне в
             Telegram.
           </p>

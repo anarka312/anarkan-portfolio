@@ -1,14 +1,20 @@
 import type { Metadata } from "next";
-import { Manrope } from "next/font/google";
+import { Space_Grotesk, Syne } from "next/font/google";
 import "./globals.css";
 
 const title = "Anarkan Sadyralieva — Web Developer & Designer";
 const description =
   "Создаю современные сайты для бизнеса: дизайн, frontend-разработка, Next.js и Tilda. Помогаю привлекать клиентов и увеличивать продажи.";
 
-const manrope = Manrope({
-  subsets: ["latin", "cyrillic"],
-  variable: "--font-manrope",
+const syne = Syne({
+  subsets: ["latin"],
+  variable: "--font-syne",
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
   display: "swap",
 });
 
@@ -39,7 +45,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="ru" className={manrope.variable}>
+    <html lang="ru" className={`${syne.variable} ${spaceGrotesk.variable}`}>
       <body>{children}</body>
     </html>
   );
