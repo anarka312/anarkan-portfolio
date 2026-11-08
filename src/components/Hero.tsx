@@ -6,11 +6,11 @@ export default function Hero() {
       aria-labelledby="hero-heading"
       className="relative isolate overflow-hidden border-b-2 border-black px-4 pt-10 pb-14 sm:px-10 sm:pt-14 sm:pb-18 lg:flex lg:min-h-[88svh] lg:items-center lg:px-16 lg:py-16"
     >
-      <div className="hero-blob hero-blob-blue absolute top-2 right-3 z-20 h-20 w-20 rounded-full border-2 border-black bg-blue p-1 sm:top-4 sm:right-10 sm:h-28 sm:w-28 sm:p-1.5 lg:right-12 lg:h-32 lg:w-32 xl:top-[14%] xl:right-[2%] xl:h-64 xl:w-64 xl:p-2">
+      <div className="hero-blob hero-blob-blue absolute top-2 right-3 z-20 h-20 w-20 rounded-full border-2 border-black bg-blue p-1 sm:top-4 sm:right-10 sm:h-28 sm:w-28 sm:p-1.5 lg:right-12 lg:h-32 lg:w-32 xl:top-[14%] xl:right-[2%] xl:h-56 xl:w-56 xl:p-2 2xl:h-64 2xl:w-64">
         <div className="relative h-full w-full overflow-hidden rounded-full border-2 border-black bg-blue">
           <Image
             src="/images/anarkan-hero.jpg"
-            alt="Anarkan Sadyralieva — Web Developer & Designer"
+            alt="Анаркан Садыралиева — web developer и designer"
             fill
             priority
             sizes="(min-width: 1024px) 16rem, (min-width: 640px) 7rem, 5rem"
@@ -33,7 +33,7 @@ export default function Hero() {
             className="hidden h-2.5 w-2.5 rounded-full border border-black bg-blue sm:block"
           />
           <p className="hidden text-[0.625rem] font-bold tracking-[0.16em] text-muted uppercase sm:block sm:text-xs">
-            Design for real business
+            Разработка сайтов для бизнеса
           </p>
         </div>
 
@@ -60,8 +60,8 @@ export default function Hero() {
           <div className="hero-enter hero-enter-3 lg:col-span-5 lg:col-start-8 lg:row-start-1">
             <div className="neo-border neo-shadow max-w-lg rotate-[1deg] bg-surface p-5 sm:p-6">
               <p className="text-base leading-relaxed text-ink sm:text-lg">
-                Создаю современные сайты, которые помогают бизнесу привлекать
-                клиентов и увеличивать продажи.
+                Создаю современные сайты для бизнеса: от структуры и дизайна до
+                адаптивной разработки и запуска.
               </p>
               <span className="sticker mt-5 bg-pink text-[0.625rem]">
                 Tilda + Next.js

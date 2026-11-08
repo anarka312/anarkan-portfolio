@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Syne } from "next/font/google";
 import "./globals.css";
 
-const title = "Anarkan Sadyralieva — Web Developer & Designer";
+const title = "Разработка сайтов для бизнеса | Анаркан Садыралиева";
 const description =
-  "Создаю современные сайты для бизнеса: дизайн, frontend-разработка, Next.js и Tilda. Помогаю привлекать клиентов и увеличивать продажи.";
+  "Создаю сайты для бизнеса: лендинги, многостраничные сайты и редизайн. Веб-дизайн, Tilda, Next.js и адаптивная frontend-разработка.";
 
 const syne = Syne({
   subsets: ["latin"],

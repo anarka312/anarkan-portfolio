@@ -30,7 +30,7 @@ export default function Contact() {
       data-reveal
       id="contact"
       aria-labelledby="contact-heading"
-      className="overflow-hidden py-16 sm:py-20 lg:py-32"
+      className="overflow-hidden pt-12 pb-16 sm:pt-16 sm:pb-20 lg:pt-24 lg:pb-32"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-10 lg:px-16">
         <div className="grid min-w-0 gap-14 lg:grid-cols-12 lg:items-start lg:gap-12 xl:gap-16">
@@ -55,8 +55,7 @@ export default function Contact() {
             </h2>
 
             <p className="mt-7 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
-              Расскажите немного о вашей задаче — я изучу проект и свяжусь с
-              вами.
+              Расскажите немного о проекте — я изучу задачу и свяжусь с вами.
             </p>
 
             <address className="mt-9 not-italic sm:mt-10">

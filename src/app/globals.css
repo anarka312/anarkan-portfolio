@@ -93,7 +93,13 @@
   }
 
   .neo-shadow {
-    box-shadow: 6px 6px 0 0 var(--black);
+    box-shadow: 4px 4px 0 0 var(--black);
+  }
+
+  @media (min-width: 40rem) {
+    .neo-shadow {
+      box-shadow: 6px 6px 0 0 var(--black);
+    }
   }
 
   .neo-shadow-hover {
@@ -104,7 +110,7 @@
 
   .neo-shadow-hover:hover,
   .neo-shadow-hover:focus-visible {
-    box-shadow: 9px 9px 0 0 var(--black);
+    box-shadow: 7px 7px 0 0 var(--black);
     transform: translate(-2px, -2px);
   }
 

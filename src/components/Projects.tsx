@@ -5,6 +5,7 @@ type Project = {
   title: string;
   image: string;
   imageAlt: string;
+  imagePosition: string;
   type: string;
   role: string;
   description: string;
@@ -17,11 +18,12 @@ const projects: Project[] = [
     id: "01",
     title: "Чё За Квест",
     image: "/projects/chezakvest.jpg",
-    imageAlt: "Главная страница проекта Чё За Квест",
+    imageAlt: "Сайт квест-проекта Чё За Квест",
+    imagePosition: "left center",
     type: "Team Project · Tilda",
-    role: "Tilda Implementation & Responsive Development",
+    role: "Сборка в Tilda и адаптивная разработка",
     description:
-      "Работала в команде под руководством ведущего разработчика. Переносила готовый дизайн в Tilda, собирала страницы и настраивала адаптивную версию для разных устройств.",
+      "Перенесла готовый дизайн в Tilda, собрала страницы и адаптивные версии для desktop и mobile в рамках командного проекта.",
     status: "Live project",
     href: "https://чезаквест.рф/ugon",
   },
@@ -29,11 +31,12 @@ const projects: Project[] = [
     id: "02",
     title: "LuxElectric",
     image: "/projects/luxelectric.jpg",
-    imageAlt: "Главная страница сайта LuxElectric",
+    imageAlt: "Сайт LuxElectric",
+    imagePosition: "10% center",
     type: "Team Project · Website Implementation",
-    role: "Website Implementation & Responsive Development",
+    role: "Реализация сайта и адаптивная разработка",
     description:
-      "Работала над реализацией коммерческого сайта под руководством ведущего разработчика. Переносила готовый дизайн, собирала страницы и настраивала адаптивную версию для разных устройств.",
+      "В рамках командного проекта переносила готовый дизайн коммерческого сайта, собирала страницы и настраивала адаптивные версии для разных устройств.",
     status: "Live project",
     href: "https://luxelectric.ru",
   },
@@ -41,19 +44,21 @@ const projects: Project[] = [
     id: "03",
     title: "Evospace",
     image: "/projects/evospace.jpg",
-    imageAlt: "Главная страница сайта Evospace",
+    imageAlt: "Сайт Evospace",
+    imagePosition: "left center",
     type: "Team Project · Tilda",
-    role: "Tilda Implementation & Responsive Development",
+    role: "Сборка в Tilda и адаптивная разработка",
     description:
-      "Я работала над проектом под руководством ведущего разработчика: переносила готовый дизайн в Tilda, собирала страницы и настраивала адаптивность.",
+      "Под руководством ведущего разработчика переносила готовый дизайн в Tilda, собирала страницы и настраивала адаптивность.",
   },
   {
     id: "04",
     title: "Сухой лес",
     image: "/projects/suhoy-les.jpg",
-    imageAlt: "Главная страница сайта Сухой лес",
+    imageAlt: "Сайт Сухой лес",
+    imagePosition: "10% center",
     type: "Commercial Project · Tilda",
-    role: "Tilda Development",
+    role: "Разработка на Tilda",
     description: "Коммерческий сайт на платформе Tilda.",
     status: "Live project",
     href: "https://сухой-лес.рф",
@@ -74,7 +79,7 @@ export default function Projects() {
       data-reveal
       id="projects"
       aria-labelledby="projects-heading"
-      className="overflow-hidden py-16 sm:py-20 lg:py-28"
+      className="overflow-hidden pt-12 pb-16 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-24"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-10 lg:px-16">
         <p className="sticker rotate-[-1deg] bg-yellow text-[0.625rem] sm:text-xs">
@@ -100,7 +105,7 @@ export default function Projects() {
           </p>
         </div>
 
-        <ol className="mt-14 grid gap-16 sm:mt-18 sm:gap-20 lg:mt-24 lg:gap-28">
+        <ol className="mt-14 grid gap-16 sm:mt-16 sm:gap-16 lg:mt-16 lg:gap-20">
           {projects.map((project, index) => {
             const isReversed = index % 2 === 1;
             const tags = project.type.split(" · ");
@@ -118,7 +123,7 @@ export default function Projects() {
               <li
                 key={project.id}
                 data-reveal
-                className="group relative min-w-0 p-2 sm:p-3"
+                className="group relative min-w-0 p-2 sm:p-3 lg:p-2"
               >
                 <div
                   aria-hidden="true"
@@ -129,20 +134,20 @@ export default function Projects() {
                   className={`relative z-10 grid min-w-0 overflow-hidden border-2 border-black bg-surface shadow-[4px_4px_0_0_#000] transition-transform duration-200 motion-safe:group-hover:-translate-x-0.5 motion-safe:group-hover:-translate-y-0.5 sm:shadow-[6px_6px_0_0_#000] lg:grid-rows-[auto_1fr] ${gridColumns}`}
                 >
                   <header
-                    className={`min-w-0 p-5 pb-4 sm:p-7 sm:pb-5 lg:row-start-1 lg:p-9 lg:pb-5 ${contentPosition}`}
+                    className={`min-w-0 p-5 pb-4 sm:p-7 sm:pb-5 lg:row-start-1 lg:px-8 lg:pt-6 lg:pb-3 ${contentPosition}`}
                   >
-                    <p className="font-display text-5xl leading-none font-extrabold tracking-[-0.08em] text-blue sm:text-6xl lg:text-8xl">
+                    <p className="font-display text-5xl leading-none font-extrabold tracking-[-0.08em] text-blue sm:text-6xl lg:text-[5.5rem]">
                       {project.id}
                     </p>
-                    <h3 className="mt-3 font-display text-3xl leading-[0.95] font-extrabold tracking-[-0.05em] text-ink uppercase sm:text-4xl lg:mt-4 lg:text-5xl">
+                    <h3 className="mt-3 font-display text-3xl leading-[0.95] font-extrabold tracking-[-0.05em] text-ink uppercase sm:text-4xl lg:text-5xl">
                       {project.title}
                     </h3>
                   </header>
 
                   <div
-                    className={`min-w-0 px-5 sm:px-7 lg:row-span-2 lg:row-start-1 lg:p-6 ${imagePosition}`}
+                    className={`min-w-0 px-5 sm:px-7 lg:row-span-2 lg:row-start-1 lg:p-5 ${imagePosition}`}
                   >
-                    <div className="flex h-full min-h-[17rem] flex-col overflow-hidden border-2 border-black bg-surface sm:min-h-[24rem] lg:min-h-[30rem]">
+                    <div className="flex h-full min-h-[17rem] flex-col overflow-hidden border-2 border-black bg-surface sm:min-h-[24rem] lg:min-h-[26rem]">
                       <div className="flex min-h-11 shrink-0 items-center justify-between gap-3 border-b-2 border-black bg-surface px-3 py-2 sm:px-4">
                         <div aria-hidden="true" className="flex gap-1.5">
                           <span className="h-2.5 w-2.5 rounded-full border border-black bg-yellow" />
@@ -159,20 +164,21 @@ export default function Projects() {
                           alt={project.imageAlt}
                           fill
                           sizes="(min-width: 1280px) 700px, (min-width: 1024px) 55vw, (min-width: 640px) calc(100vw - 104px), calc(100vw - 52px)"
-                          className="object-cover object-left transition-transform duration-250 motion-safe:group-hover:scale-[1.02] motion-reduce:transition-none"
+                          style={{ objectPosition: project.imagePosition }}
+                          className="object-cover transition-transform duration-250 motion-safe:group-hover:scale-[1.02] motion-reduce:transition-none"
                         />
                       </div>
                     </div>
                   </div>
 
                   <div
-                    className={`flex min-w-0 flex-col p-5 pt-6 sm:p-7 sm:pt-7 lg:row-start-2 lg:p-9 lg:pt-3 ${contentPosition}`}
+                    className={`flex min-w-0 flex-col p-5 pt-6 sm:p-7 sm:pt-7 lg:row-start-2 lg:px-8 lg:pt-2 lg:pb-6 ${contentPosition}`}
                   >
                     <p className="text-xs leading-relaxed font-bold tracking-[0.05em] text-ink uppercase sm:text-sm">
                       {project.role}
                     </p>
 
-                    <div className="mt-4 flex flex-wrap gap-2">
+                    <div className="mt-4 flex flex-wrap gap-2 lg:mt-3">
                       {tags.map((tag) => (
                         <span
                           key={tag}
@@ -188,7 +194,7 @@ export default function Projects() {
                       )}
                     </div>
 
-                    <p className="mt-5 text-sm leading-relaxed text-muted sm:text-base lg:text-lg">
+                    <p className="mt-5 text-sm leading-relaxed text-muted sm:text-base lg:mt-4">
                       {project.description}
                     </p>
 
@@ -198,7 +204,7 @@ export default function Projects() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={`Смотреть сайт ${project.title} в новой вкладке`}
-                        className="neo-button mt-7 w-full self-start bg-yellow px-5 py-3 text-xs sm:w-auto sm:text-sm"
+                        className="neo-button mt-7 w-full self-start bg-yellow px-5 py-3 text-xs sm:w-auto sm:text-sm lg:mt-5"
                       >
                         Смотреть сайт ↗
                       </a>

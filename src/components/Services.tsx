@@ -3,9 +3,9 @@ const services = [
     number: "01",
     marker: "Conversion",
     symbol: "</>",
-    title: "Landing Pages",
+    title: "Лендинги",
     description:
-      "Лендинги для услуг и продуктов с понятной структурой, современным дизайном и фокусом на целевое действие.",
+      "Одностраничные сайты для запуска услуги, продукта или рекламной кампании. Продуманная структура, адаптивный дизайн и понятный путь к заявке.",
     cardClass: "bg-yellow text-ink",
     markerClass: "bg-surface text-ink",
     symbolClass: "text-ink",
@@ -14,9 +14,9 @@ const services = [
     number: "02",
     marker: "Business",
     symbol: "{ }",
-    title: "Business Websites",
+    title: "Сайты для бизнеса",
     description:
-      "Современные сайты для компаний и экспертов, которые помогают презентовать бизнес, формировать доверие и получать обращения.",
+      "Многостраничные сайты для компаний и экспертов: услуги, проекты, преимущества, контакты и другие необходимые разделы.",
     cardClass: "bg-surface text-ink",
     markerClass: "bg-blue text-white",
     symbolClass: "text-blue",
@@ -25,20 +25,20 @@ const services = [
     number: "03",
     marker: "Redesign",
     symbol: "↻",
-    title: "Website Redesign",
+    title: "Редизайн сайтов",
     description:
-      "Обновление устаревших сайтов: структура, визуальная подача, адаптивность и пользовательский опыт.",
+      "Обновляю устаревший дизайн, структуру и визуальную подачу существующего сайта, сохраняя понятный пользовательский путь.",
     cardClass: "bg-pink text-ink",
     markerClass: "bg-surface text-ink",
     symbolClass: "text-ink",
   },
   {
     number: "04",
-    marker: "Workflow",
+    marker: "Design & Development",
     symbol: "✦",
-    title: "Design & AI Workflow",
+    title: "Дизайн & разработка",
     description:
-      "Использую дизайн, frontend-разработку и AI-инструменты, чтобы быстрее превращать идеи в готовые digital-решения.",
+      "От структуры и визуальной концепции до адаптивной разработки и запуска готового сайта.",
     cardClass: "bg-blue text-white",
     markerClass: "bg-yellow text-ink",
     symbolClass: "text-white",
@@ -51,7 +51,7 @@ export default function Services() {
       data-reveal
       id="services"
       aria-labelledby="services-heading"
-      className="py-16 sm:py-20 lg:py-28"
+      className="pt-12 pb-16 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-24"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-10 lg:px-16">
         <p className="sticker rotate-[-1deg] bg-surface text-[0.625rem] sm:text-xs">
@@ -72,7 +72,7 @@ export default function Services() {
           </span>
         </h2>
 
-        <ul className="mt-12 grid grid-cols-1 gap-7 sm:mt-14 md:auto-rows-fr md:grid-cols-2 md:gap-8 lg:mt-16">
+        <ul className="mt-11 grid grid-cols-1 gap-6 sm:mt-12 md:auto-rows-fr md:grid-cols-2 md:gap-7 lg:mt-12">
           {services.map(
             ({
               number,
@@ -87,10 +87,10 @@ export default function Services() {
               <li key={title} className="min-w-0">
                 <article
                   aria-labelledby={`service-${number}-heading`}
-                  className={`group neo-border neo-shadow neo-shadow-hover flex h-full min-h-[22rem] flex-col overflow-hidden p-6 sm:min-h-[24rem] sm:p-8 lg:min-h-[27rem] lg:p-10 ${cardClass}`}
+                  className={`group neo-border neo-shadow neo-shadow-hover flex h-full min-h-[20rem] flex-col overflow-hidden p-5 sm:min-h-[22rem] sm:p-7 lg:min-h-[22rem] lg:px-8 lg:py-7 ${cardClass}`}
                 >
                   <div className="flex items-start justify-between gap-4">
-                    <p className="font-display text-3xl leading-none font-extrabold tracking-[-0.06em] sm:text-4xl">
+                    <p className="font-display text-3xl leading-none font-extrabold tracking-[-0.06em] sm:text-4xl lg:text-[2.125rem]">
                       {number}
                     </p>
                     <p
@@ -100,7 +100,7 @@ export default function Services() {
                     </p>
                   </div>
 
-                  <div className="my-6 flex flex-1 items-center justify-end sm:my-8">
+                  <div className="my-5 flex flex-1 items-center justify-end sm:my-6 lg:my-4">
                     {number === "02" && (
                       <span
                         aria-hidden="true"
@@ -109,20 +109,20 @@ export default function Services() {
                     )}
                     <span
                       aria-hidden="true"
-                      className={`font-mono text-[clamp(4rem,10vw,7.5rem)] leading-none font-black tracking-[-0.1em] transition-transform duration-200 motion-safe:group-hover:rotate-[4deg] ${symbolClass}`}
+                      className={`font-mono text-[clamp(3.75rem,8vw,6rem)] leading-none font-black tracking-[-0.1em] transition-transform duration-200 motion-safe:group-hover:rotate-[4deg] ${symbolClass}`}
                     >
                       {symbol}
                     </span>
                   </div>
 
-                  <div className="border-t-2 border-black pt-5 sm:pt-6">
+                  <div className="border-t-2 border-black pt-4 sm:pt-5 lg:pt-4">
                     <h3
                       id={`service-${number}-heading`}
                       className="font-display text-2xl leading-tight font-extrabold tracking-[-0.04em] sm:text-3xl lg:text-4xl"
                     >
                       {title}
                     </h3>
-                    <p className="mt-4 max-w-xl text-sm leading-relaxed sm:text-base lg:text-lg">
+                    <p className="mt-3 max-w-xl text-sm leading-relaxed sm:text-base lg:text-lg">
                       {description}
                     </p>
                   </div>

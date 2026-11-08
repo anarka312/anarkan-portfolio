@@ -1,8 +1,8 @@
 const skills = [
-  { label: "HTML / CSS / JavaScript", color: "bg-yellow text-ink" },
-  { label: "Next.js", color: "bg-surface text-ink" },
+  { label: "Web Development", color: "bg-yellow text-ink" },
+  { label: "Web Design", color: "bg-surface text-ink" },
   { label: "Tilda", color: "bg-pink text-ink" },
-  { label: "AI Tools", color: "bg-blue text-white" },
+  { label: "Next.js", color: "bg-blue text-white" },
 ];
 
 export default function About() {
@@ -48,10 +48,11 @@ export default function About() {
                 Web Developer + Designer
               </p>
               <p className="mt-6 text-base leading-relaxed text-ink sm:text-lg lg:text-xl lg:leading-relaxed">
-                Создаю современные сайты для бизнеса, объединяя дизайн,
-                frontend-разработку и AI-инструменты. Для меня важно, чтобы сайт
-                был не только визуально сильным, но и удобным, понятным и работал
-                на задачи бизнеса.
+                Я Анаркан — web developer &amp; designer. Работаю на стыке
+                дизайна и frontend-разработки: продумываю структуру, собираю
+                интерфейс, адаптирую его под разные устройства и довожу сайт до
+                запуска. Использую Tilda, Next.js и AI-инструменты там, где они
+                действительно ускоряют работу.
               </p>
             </article>
           </div>

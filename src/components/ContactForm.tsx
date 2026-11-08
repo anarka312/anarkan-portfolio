@@ -3,10 +3,10 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 
 const services = [
-  "Landing Page",
-  "Business Website",
-  "Website Redesign",
-  "Другое",
+  { label: "Лендинг", value: "Landing Page" },
+  { label: "Сайт для бизнеса", value: "Business Website" },
+  { label: "Редизайн сайта", value: "Website Redesign" },
+  { label: "Другое", value: "Другое" },
 ] as const;
 
 const fieldClassName =
@@ -108,17 +108,17 @@ export default function ContactForm() {
           Что вам нужно?
         </legend>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-          {services.map((service, index) => (
-            <label key={service} className="relative min-w-0 cursor-pointer">
+          {services.map(({ label, value }, index) => (
+            <label key={value} className="relative min-w-0 cursor-pointer">
               <input
                 type="radio"
                 name="service"
-                value={service}
+                value={value}
                 defaultChecked={index === 0}
                 className="peer sr-only"
               />
               <span className="flex min-h-14 items-center border-2 border-black bg-surface px-4 py-3 text-sm font-bold text-ink uppercase transition-[box-shadow,transform,background-color] duration-150 hover:bg-canvas peer-checked:-translate-x-0.5 peer-checked:-translate-y-0.5 peer-checked:bg-yellow peer-checked:shadow-[4px_4px_0_0_#000] peer-focus-visible:outline-3 peer-focus-visible:outline-offset-3 peer-focus-visible:outline-black">
-                {service}
+                {label}
               </span>
             </label>
           ))}
