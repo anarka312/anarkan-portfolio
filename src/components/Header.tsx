@@ -1,29 +1,58 @@
+import Link from "next/link";
+
 import MobileNavigation from "@/components/MobileNavigation";
 
 const navigation = [
-  { label: "Обо мне", href: "#about" },
-  { label: "Услуги", href: "#services" },
-  { label: "Проекты", href: "#projects" },
-  { label: "Контакты", href: "#contact" },
+  { label: "Обо мне", hash: "#about" },
+  { label: "Услуги", hash: "#services" },
+  { label: "Проекты", hash: "#projects" },
+  { label: "Контакты", hash: "#contact" },
 ];
 
-export default function Header() {
+type HeaderProps = {
+  logoHref?: string;
+  navigationBase?: string;
+};
+
+export default function Header({
+  logoHref,
+  navigationBase = "",
+}: HeaderProps = {}) {
+  const navigationItems = navigation.map(({ label, hash }) => ({
+    label,
+    href: `${navigationBase}${hash}`,
+  }));
+
+  const brand = (
+    <>
+      <span className="font-display text-base font-extrabold tracking-[-0.06em] text-ink sm:text-xl">
+        ANARKAN.
+      </span>
+      <span
+        aria-hidden="true"
+        className="h-2.5 w-2.5 rotate-12 border border-black bg-yellow sm:h-3 sm:w-3"
+      />
+    </>
+  );
+
   return (
     <header className="sticky top-0 z-50 border-b-2 border-black bg-background/95 font-sans">
       <div className="mx-auto flex min-h-14 max-w-7xl items-center justify-between gap-2 px-3 sm:min-h-16 sm:gap-6 sm:px-10 lg:px-16">
-        <div className="flex shrink-0 items-center gap-1.5">
-          <p className="font-display text-base font-extrabold tracking-[-0.06em] text-ink sm:text-xl">
-            ANARKAN.
-          </p>
-          <span
-            aria-hidden="true"
-            className="h-2.5 w-2.5 rotate-12 border border-black bg-yellow sm:h-3 sm:w-3"
-          />
-        </div>
+        {logoHref ? (
+          <Link
+            href={logoHref}
+            aria-label="На главную Anarkan.dev"
+            className="flex shrink-0 items-center gap-1.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black"
+          >
+            {brand}
+          </Link>
+        ) : (
+          <div className="flex shrink-0 items-center gap-1.5">{brand}</div>
+        )}
 
         <nav aria-label="Основная навигация" className="hidden min-w-0 md:block">
           <ul className="flex items-center justify-end gap-0.5 sm:gap-2 lg:gap-4">
-            {navigation.map(({ label, href }) => (
+            {navigationItems.map(({ label, href }) => (
               <li key={href}>
                 <a
                   href={href}
@@ -40,7 +69,7 @@ export default function Header() {
           </ul>
         </nav>
 
-        <MobileNavigation items={navigation} />
+        <MobileNavigation items={navigationItems} />
       </div>
     </header>
   );
